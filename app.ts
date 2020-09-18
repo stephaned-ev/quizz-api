@@ -5,7 +5,7 @@ import { green, yellow } from "https://deno.land/std@0.53.0/fmt/colors.ts";
 import quizzRouter from "./routes/quizz.ts";
 
 const app = new Application();
-const port: number = 1313;
+const port: number = 8000;
 
 app.use(oakCors());
 app.use(quizzRouter.routes());
