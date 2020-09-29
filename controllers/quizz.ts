@@ -23,7 +23,6 @@ export default {
     response.body = {
       success: true,
       quizzs: allQuizzs,
-      // profiles: profiles,
     };
   },
   /**
@@ -73,7 +72,18 @@ export default {
       };
     }
   },
-  getQuizzById: () => {},
+  getQuizzById: async (
+    { params, response }: { params: { id: string }; response: any },
+  ) => {
+    const quizzId = params.id;
+    const theQuizz = await quizzCollection.findOne(quizzId);
+    response.headers.set("Content-Type", "application/json");
+    response.status = 200;
+    response.body = {
+      success: true,
+      quizz: theQuizz,
+    };
+  },
   updateQuizzById: async () => {},
   deleteQuizzById: () => {},
 };
