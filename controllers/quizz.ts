@@ -76,7 +76,7 @@ export default {
     { params, response }: { params: { id: string }; response: any },
   ) => {
     const quizzId = params.id;
-    const theQuizz = await quizzCollection.findOne(quizzId);
+    const theQuizz = await quizzCollection.findOne({ _id: { $oid: quizzId } });
     response.headers.set("Content-Type", "application/json");
     response.status = 200;
     response.body = {
